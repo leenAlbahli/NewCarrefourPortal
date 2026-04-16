@@ -1,0 +1,1594 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Carrefour Portal </title>
+    <style>
+        /* ===== RESET ===== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
+        }
+
+        /* ===== BODY + DYNAMIC BACKGROUND ===== */
+        body {
+            overflow-x: hidden;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f8f6f2, #f1efe9);
+            position: relative;
+        }
+
+        /* Animated particles */
+        #particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            width: 100%;
+            background-color: #D6C399;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            box-shadow: 100 8px 22px rgba(0,0,0,0.15);
+            border-bottom: 2px solid #B4975B;
+        }
+
+        .logo img {
+            height: 70px;
+        }
+
+        .header-links {
+            display: flex;
+            gap: 25px;
+            font-weight: bold;
+            align-items: center;
+        }
+
+
+
+
+            .header-links button {
+                all: unset;
+                color: #413100;
+                cursor: pointer;
+                font-weight: bold;
+                transition: .3s;
+                text-align: center;
+            }
+
+                .header-links button:hover {
+                    color: #B4975B;
+                }
+
+
+
+
+
+            .header-links span {
+                    color: #413100;
+                    cursor: pointer;
+                    transition: .3s;
+                }
+
+                    .header-links span:hover
+                    { 
+                        color: #B4975B;
+                    }
+                /* ===== MAIN CONTAINER ===== */
+                .container {
+                    max-width: 1800px;
+                    margin: 0 auto;
+                    padding: 160px 40px 60px;
+                    position: relative;
+                    z-index: 1;
+                }
+                /* ===== HERO ===== */
+                .hero {
+                    background: linear-gradient(135deg, #fffefc, #fffdf7);
+                    padding: clamp(80px, 15vw, 140px); /* أكبر حجم على الشاشات الكبيرة */
+                    border-radius: clamp(25px, 3vw, 55px);
+                    box-shadow: 0 35px 70px rgba(0,0,0,0.08);
+                    text-align: center;
+                    position: relative;
+                    overflow: hidden;
+                    transition: transform 0.5s ease;
+                }
+
+
+                    .hero:hover {
+                        transform: translateY(-5px) scale(1.02);
+                    }
+
+                .quick-actions {
+                    color: #B4975B;
+                    font-weight: bold;
+                    font-size: 38px; /* تكبير الخط */
+                    margin-bottom: 25px;
+                    position: relative;
+                    text-align: center;
+                }
+
+                    .quick-actions::after {
+                        content: "";
+                        width: 195px;
+                        height: 3px;
+                        background: #B4975B;
+                        display: block;
+                        margin: 10px auto 0;
+                        border-radius: 2px;
+                        animation: glowLine 2s infinite alternate;
+                    }
+
+                @keyframes glowLine {
+                    0% {
+                        box-shadow: 0 0 10px #B4975B55;
+                    }
+
+                    100% {
+                        box-shadow: 0 0 20px #B4975B88;
+                    }
+                }
+                /* ===== ICON GRID ===== */
+                .icons-grid {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit,minmax(240px,1fr)); /* لتتناسب 5 أيقونات في السطر */
+                    gap: 25px;
+                    margin-top: 50px;
+                    z-index: 2;
+                    padding: 20px;
+                    border: 3px solid #5A3E1B; /* حدود بنية غامقة */
+                    border-radius: 20px;
+                    background-color: #fffaf0; /* خلفية فاتحة داخل الإطار */
+                }
+
+                .icon-box {
+                    background: white;
+                    border-radius: 20px;
+                    padding: 20px 15px;
+                    text-align: center;
+                    text-decoration: none;
+                    color: #413100;
+                    position: relative;
+                    overflow: hidden;
+                    transition: all .4s ease, transform .3s;
+                    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+                    border: 1px solid #eee;
+                }
+
+                    .icon-box:hover {
+                        transform: translateY(-10px) scale(1.07);
+                        box-shadow: 0 25px 50px rgba(180,150,90,0.35);
+                    }
+
+                    .icon-box img {
+                        width: 55px; /* تصغير من 50px إلى 40px */
+                        margin-bottom: 15px;
+                        transition: .4s;
+                    }
+
+                    .icon-box:hover img {
+                        transform: scale(1.3) rotate(10deg);
+                        filter: drop-shadow(0 0 8px #B4975B);
+                    }
+
+                .icon-title {
+                    font-size: 25px;
+                    font-weight: 700;
+                }
+
+                    .icon-title span {
+                        display: block;
+                        font-size: 25px;
+                        margin-top: 6px;
+                        color: #B4975B;
+                    }
+                /* Tooltip */
+                .icon-box .tooltip {
+                    position: absolute;
+                    bottom: 110%;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    background: #B4975B;
+                    color: #fff;
+                    padding: 6px 10px;
+                    font-size: 22px;
+                    border-radius: 6px;
+                    opacity: 0;
+                    pointer-events: none;
+                    transition: opacity .3s, transform .3s;
+                }
+
+                .icon-box:hover .tooltip {
+                    opacity: 1;
+                    transform: translateX(-50%) translateY(-5px);
+                }
+                /* ===== FOOTER ===== */
+                .footer {
+                    margin-top: 70px;
+                    display: flex;
+                    justify-content: center;
+                    gap: 40px;
+                    font-weight: bold;
+                    padding-bottom: 40px;
+                }
+
+                    .footer a {
+                        color: #413100;
+                        text-decoration: none;
+                        transition: .3s;
+                    }
+
+                        .footer a:hover {
+                            color: #B4975B;
+                            text-shadow: 0 0 5px #B4975B;
+                        }
+                /* ===== MEDIA ===== */
+                @media(max-width:768px) {
+                    .quick-actions {
+                        font-size: 22px;
+                    }
+
+                    .hero {
+                        padding: 30px 20px;
+                    }
+
+                    .icons-grid {
+                        grid-template-columns: repeat(auto-fit,minmax(150px,1fr));
+                    }
+                }
+                /* ===== PARTICLE CANVAS ===== */
+                canvas {
+                    display: block;
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    z-index: 0;
+                    pointer-events: none;
+                }
+    </style>
+
+
+
+
+    
+
+</head>
+<body>
+
+    <canvas id="particles"></canvas>
+
+    <div class="header">
+        <div class="logo"><img src="images/MAJEDALFUTTAIMNEW-removebg-preview.png" alt="Logo"></div>
+        <div class="header-links">
+            <span>MARHABA <br>مرحبا</span>
+            <span>Welcome, User <br>,اهلا </span>
+
+
+            <button onclick="logout()">
+                Logout <br> تسجيل الخروج
+            </button>
+            
+
+        </div>
+    </div>
+
+
+    <div class="container">
+
+        <div class="hero">
+            <div class="quick-actions">Quick Access Services         خدمات الوصول السريع</div>
+
+            <div class="icons-grid">
+                <a href="javascript:void(0);" onclick="openExitPopup()" class="icon-box">
+                    <img src="images/icons8-to-go-50.png">
+                    <div class="icon-title">Exit Re-Entry<span>طلب خروج وعودة</span></div>
+                </a>
+
+
+                <a href="#" onclick="openUniformPopup()" class="icon-box">
+                    <img src="images/icons8-formal-outfit-48.png">
+                    <div class="icon-title">Uniform Request<span>الزي الرسمي الموحد</span></div>
+                    <div class="tooltip">طلب الزي الرسمي </div>
+                </a>
+
+
+                <a href="javascript:void(0);" onclick="openAccessCardPopup()" class="icon-box">
+                    <img src="images/icons8-magnetic-card-50.png">
+                    <div class="icon-title">Access Card Request<span>اصدار بطاقة الدخول</span></div>
+                </a>
+
+
+                <a href="javascript:void(0);" onclick="openSalaryPopup()" class="icon-box">
+                    <img src="images/icons8-paycheque-50.png">
+                    <div class="icon-title">Salary Declaration<span>تعريف بالراتب</span></div>
+                </a>
+
+
+
+                <a href="#" class="icon-box" onclick="openBankLoanPopup()">
+                    <img src="images/icons8-bank-account-48.png">
+                    <div class="icon-title">Bank Loan Request<span>طلب قرض من البنك</span></div>
+                </a>
+
+
+                <a href="javascript:void(0);" onclick="openFamilyPopup()" class="icon-box">
+                    <img src="images/icons8-family-50.png">
+                    <div class="icon-title">Family Visit Visa<span>تأشيرة زيارة عائلية</span></div>
+                </a>
+
+                <a href="javascript:void(0);" onclick="openComingSoonPopup()" class="icon-box">
+                    <img src="images/icons8-spa-care-48.png">
+                    <div class="icon-title">Ahlan Portal<span>بوابة أهلا</span></div>
+                </a>
+
+                <a href="javascript:void(0);" onclick="openComingSoonPopup()" class="icon-box">
+                    <img src="images/icons8-i-50.png">
+                    <div class="icon-title">My Success<span>موقع نجاحي </span></div>
+                </a>
+
+                <a href="javascript:void(0);" onclick="openComingSoonPopup()" class="icon-box">
+                    <img src="images/icons8-feedback-50.png">
+                    <div class="icon-title">HCMS Portal<span>HCMS بوابة</span></div>
+                </a>
+
+                <a href="javascript:void(0);" onclick="openExperiencePopup()" class="icon-box">
+                    <img src="images/icons8-certification-50.png">
+                    <div class="icon-title">Experience Certificate<span>طلب شهادة خبرة</span></div>
+                </a>
+
+                <a href="javascript:void(0);" onclick="openSimPopup()" class="icon-box">
+                    <img src="images/icons8-micro-sim-card-50.png">
+                    <div class="icon-title">Issue Mobile SIM<span>اصدار شرائح الجوال</span></div>
+                </a>
+
+
+                <a href="javascript:void(0);" onclick="openComingSoonPopup()" class="icon-box">
+                    <img src="images/icons8-conversion-rate-50.png">
+                    <div class="icon-title">My Club Activation<span>ماي كلوب</span></div>
+                </a>
+
+                <a href="javascript:void(0);" onclick="openEmployeeFeedbackPopup()" class="icon-box">
+                    <img src="images/icons8-feedback-50.png">
+                    <div class="icon-title">Employee Feedback<span>ملاحظات الموظفين</span></div>
+                </a>
+
+
+            </div>
+        </div>
+
+        <div class="footer">
+            <a href="#" onclick="openSimpleModal('copyrightModal')">Copyright Notice <br> إشعار حقوق النشر</a>
+            <a href="#" onclick="openSimpleModal('privacyModal')">Privacy Policy <br>سياسة الخصوصية</a>
+            <a href="mailto:support@chportal.com">Contact Us <br>تواصل معنا</a>
+        </div>
+
+    </div>
+
+   
+
+    <script>
+
+
+
+
+        function logout() {
+            // حذف أي بيانات جلسة (إذا تستخدمها)
+            sessionStorage.clear();
+            localStorage.clear();
+
+            // يمنع الرجوع للصفحة السابقة
+            window.location.replace("index.html");
+        }
+
+
+
+
+
+
+        // ===== PARTICLE BACKGROUND =====
+        const canvas = document.getElementById('particles');
+        const ctx = canvas.getContext('2d');
+        let w = canvas.width = window.innerWidth;
+        let h = canvas.height = window.innerHeight;
+
+        window.addEventListener('resize', () => { w = canvas.width = window.innerWidth; h = canvas.height = window.innerHeight; });
+
+        let particles = [];
+        const particleCount = 600;
+
+        for (let i = 0; i < particleCount; i++) {
+            particles.push({
+                x: Math.random() * w,
+                y: Math.random() * h,
+                r: Math.random() * 3 + 1,
+                dx: (Math.random() - 0.5) * 1.2,
+                dy: (Math.random() - 0.5) * 1.2
+            });
+
+
+
+        }
+        function draw() {
+            ctx.clearRect(0, 0, w, h);
+            for (let i = 0; i < particles.length; i++) {
+                let p = particles[i];
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2, false);
+                ctx.fillStyle = "#B4975B88";
+                ctx.fill();
+
+                p.x += p.dx;
+                p.y += p.dy;
+
+                if (p.x < 0 || p.x > w) p.dx *= -1;
+                if (p.y < 0 || p.y > h) p.dy *= -1;
+            }
+            requestAnimationFrame(draw);
+        }
+        draw();
+    </script>
+
+    <!-- ===== SIMPLE MODAL STYLE ===== -->
+    <style>
+        .simple-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.45);
+            backdrop-filter: blur(6px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s ease;
+            z-index: 9998;
+        }
+
+            .simple-overlay.active {
+                opacity: 1;
+                visibility: visible;
+            }
+
+        .simple-modal {
+            background: #fff;
+            width: 700px;
+            max-width: 90%;
+            border-radius: 18px;
+            padding: 35px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+            transform: translateY(20px);
+            transition: 0.3s ease;
+            position: relative;
+        }
+
+        .simple-overlay.active .simple-modal {
+            transform: translateY(0);
+        }
+
+        .simple-title {
+            font-size: 30px;
+            font-weight: 800;
+            color: #413100;
+            margin-bottom: 15px;
+            border-left: 4px solid #B4975B;
+            padding-left: 10px;
+        }
+
+        .simple-content {
+            font-size: 25px;
+            line-height: 1.7;
+            color: #413100;
+        }
+
+        .simple-close {
+            position: absolute;
+            top: 15px;
+            right: 18px;
+            font-size: 18px;
+            cursor: pointer;
+            color: #413100;
+            transition: 0.2s;
+        }
+
+            .simple-close:hover {
+                color: #B4975B;
+                transform: rotate(90deg);
+            }
+
+        .footer a {
+            color: #413100;
+            text-decoration: none;
+            transition: .3s;
+            font-size: 25px;
+        }
+    </style>
+
+
+
+    <script>
+        function openAccessCardPopup() {
+            document.getElementById('accessCardPopup').classList.add('active');
+        }
+
+        function closeAccessCardPopup() {
+            document.getElementById('accessCardPopup').classList.remove('active');
+        }
+
+        function submitAccessCardForm() {
+            closeAccessCardPopup();
+            //  يمكن إضافة إرسال البيانات للسيرفر هنا
+        }
+    </script>
+
+
+
+    <script>
+        function openEmployeeFeedbackPopup() {
+            document.getElementById('employeeFeedbackPopup').classList.add('active');
+        }
+
+        function closeEmployeeFeedbackPopup() {
+            document.getElementById('employeeFeedbackPopup').classList.remove('active');
+        }
+
+        function submitEmployeeFeedbackForm() {
+            closeEmployeeFeedbackPopup();
+        }
+
+        // Creative Buttons Rating
+        document.addEventListener('DOMContentLoaded', () => {
+            const ratingBtns = document.querySelectorAll('.rating-btn');
+            ratingBtns.forEach(btn => {
+                btn.addEventListener('click', function () {
+                    ratingBtns.forEach(b => b.style.background = '');
+                    this.style.background = '#B4975B';
+                });
+            });
+        });
+    </script>
+
+
+
+    <script>
+        function openExitPopup() {
+            document.getElementById('exitPopup').classList.add('active');
+        }
+
+        function closeExitPopup() {
+            document.getElementById('exitPopup').classList.remove('active');
+        }
+
+        function submitExitForm() {
+            closeExitPopup();
+            // تقدر تضيف ارسال البيانات هنا
+        }
+    </script>
+
+
+
+    <script>
+        function openUniformPopup() {
+            document.getElementById('uniformPopup').classList.add('active');
+        }
+
+        function closeUniformPopup() {
+            document.getElementById('uniformPopup').classList.remove('active');
+        }
+
+        function submitUniformForm() {
+            closeUniformPopup();
+        }
+    </script>
+
+
+
+    <script>
+        function openSalaryPopup() {
+            document.getElementById('salaryPopup').classList.add('active');
+        }
+
+        function closeSalaryPopup() {
+            document.getElementById('salaryPopup').classList.remove('active');
+        }
+
+        function submitSalaryForm() {
+            closeSalaryPopup();
+        }
+    </script>
+
+
+    <script>
+        function openExperiencePopup() {
+            document.getElementById('experiencePopup').classList.add('active');
+        }
+
+        function closeExperiencePopup() {
+            document.getElementById('experiencePopup').classList.remove('active');
+        }
+
+        function submitExperienceForm() {
+            closeExperiencePopup();
+        }
+    </script>
+
+    <script>
+        function openBankLoanPopup() {
+            document.getElementById('bankLoanPopup').classList.add('active');
+        }
+
+        function closeBankLoanPopup() {
+            document.getElementById('bankLoanPopup').classList.remove('active');
+        }
+
+        function submitBankLoanForm() {
+            closeBankLoanPopup(); // يغلق البوب أب مباشرة بدون أي رسالة
+        }
+    </script>
+
+
+    <script>
+        function openFamilyPopup() {
+            document.getElementById('familyPopup').classList.add('active');
+        }
+
+        function closeFamilyPopup() {
+            document.getElementById('familyPopup').classList.remove('active');
+        }
+
+        function submitFamilyForm() {
+            closeFamilyPopup();
+        }
+    </script>
+
+    <script>
+        function openSimPopup() {
+            document.getElementById('simPopup').classList.add('active');
+        }
+
+        function closeSimPopup() {
+            document.getElementById('simPopup').classList.remove('active');
+        }
+
+        function submitSimForm() {
+            closeSimPopup();
+        }
+    </script>
+
+
+
+    <script>
+        //   privacyModal  copyrightModal فتح المودال
+        function openSimpleModal(id) {
+            document.getElementById(id).classList.add("active");
+        }
+
+        // غلق المودال
+        function closeSimpleModal(id) {
+            document.getElementById(id).classList.remove("active");
+        }
+
+        // غلق المودال عند الضغط خارج الصندوق
+        document.querySelectorAll(".simple-overlay").forEach(overlay => {
+            overlay.addEventListener("click", function (e) {
+                if (e.target === this) {
+                    this.classList.remove("active");
+                }
+            });
+        });
+    </script>
+
+    <script>
+        function openComingSoonPopup() {
+            document.getElementById("comingSoonPopup").classList.add("active");
+        }
+
+        function closeComingSoonPopup() {
+            document.getElementById("comingSoonPopup").classList.remove("active");
+        }
+    </script>
+
+
+
+    <!-- ===== COPYRIGHT MODAL ===== -->
+    <div class="simple-overlay" id="copyrightModal">
+        <div class="simple-modal">
+            <div class="simple-close" onclick="closeSimpleModal('copyrightModal')">✕</div>
+            <div class="simple-title">Copyright Notice</div>
+            <div class="simple-content">
+                CH Portal. All Rights Reserved.<br>
+                All content including design, graphics, icons, code, and system structure
+                is the exclusive property and protected by intellectual property laws.<br>
+                Unauthorized reproduction or distribution is strictly prohibited.
+                <br>
+                جميع المحتويات بما في ذلك التصميم، والرسومات، والأيقونات، والبرمجة، وهيكل النظام
+                هي ملكية حصرية محمية بموجب قوانين الملكية الفكرية
+                يُحظر منعًا باتا أي نسخ أو إعادة إنتاج أو توزيع غير مصرح به.
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== PRIVACY MODAL ===== -->
+    <div class="simple-overlay" id="privacyModal">
+        <div class="simple-modal">
+            <div class="simple-close" onclick="closeSimpleModal('privacyModal')">✕</div>
+            <div class="simple-title">Privacy Policy</div>
+            <div class="simple-content">
+                employee privacy and ensures secure data handling.<br>
+                Employee numbers and request data are collected for internal processing only.<br>
+                Data is stored securely and not shared externally.<br>
+                Information is retained only as operationally necessary.<br>
+                For inquiries, contact HR or system administration.
+
+                <br><br>  خصوصية الموظفين وتضمن التعامل الآمن مع البيانات<br>
+                يتم جمع الأرقام الوظيفية وبيانات الطلبات لأغراض المعالجة الداخلية فقط
+                يتم تخزين البيانات بشكل آمن ولا تتم مشاركتها مع أي جهات خارجية
+                يتم الاحتفاظ بالمعلومات فقط للمدة اللازمة وفقًا لمتطلبات التشغيل
+                للاستفسارات، يرجى التواصل مع قسم الموارد البشرية أو إدارة النظام
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- ===== BANK LOAN FULLSCREEN POP-UP ===== -->
+    <div class="simple-overlay" id="bankLoanPopup">
+        <div class="simple-modal" style="width:60%; height:95vh; padding:50px; border-radius:25px; border:5px solid #5A3E1B; background:#fff; overflow-y:auto;">
+
+            <!-- CLOSE BUTTON -->
+            <div class="simple-close" onclick="closeBankLoanPopup()" style="font-size:32px; cursor:pointer;">✕</div>
+
+            <!-- TITLE -->
+            <div class="title" style="text-align:center; font-size:42px; font-weight:900; color:#413100; text-transform:uppercase;">Bank Loan Request طلب قرض من البنك </div>
+            <div class="divider" style="width:120px; height:5px; background:#B4975B; margin:20px auto 45px; border-radius:4px;"></div>
+
+            <!-- FORM BORDER CONTAINER -->
+            <div style="border:4px solid #5A3E1B; border-radius:20px; padding:50px; display:flex; flex-direction:column; gap:20px;">
+
+                <!-- ROW 1 -->
+                <div class="form-row" style="display:flex; gap:50px; flex-wrap:wrap;">
+                    <div class="form-group" style="flex:1; min-width:350px;">
+                        <label style="font-size:25px; font-weight:700; margin-bottom:8px; display:block;">Employee Name <span style="margin-left:240px;">اسم الموظف</span></label>
+                        <input type="text" placeholder="Enter full name  /  ادخل الاسم كامل " style="font-size: 18px; padding: 18px; border-radius: 12px; border: 2px solid #B4975B; width: 100%;">
+                    </div>
+                    <div class="form-group" style="flex:1; min-width:350px;">
+                        <label style="font-size:25px; font-weight:700; margin-bottom:8px; display:block;">Employee ID <span style="margin-left:280px;">رقم الموظف</span></label>
+                        <input type="text" placeholder="Enter employee ID  /  ادخل رقم الموظف " style="font-size: 18px; padding: 18px; border-radius: 12px; border: 2px solid #B4975B; width: 100%;">
+                    </div>
+                </div>
+
+                <!-- ROW 2 -->
+                <div class="form-row" style="display:flex; gap:50px; flex-wrap:wrap;">
+                    <div class="form-group" style="flex:1; min-width:350px;">
+                        <label style="font-size:25px; font-weight:700; margin-bottom:8px; display:block;">Bank Name <span style="margin-left:320px;">اسم البنك</span></label>
+                        <input type="text" placeholder="Enter bank name  /   ادخل اسم البنك " style="font-size: 18px; padding: 18px; border-radius: 12px; border: 2px solid #B4975B; width: 100%;">
+                    </div>
+                    <div class="form-group" style="flex:1; min-width:350px;">
+                        <label style="font-size:25px; font-weight:700; margin-bottom:8px; display:block;">Loan Amount <span style="margin-left:280px;">مبلغ القرض </span> </label>
+                        <input type="number" placeholder="Enter requested amount  /  ادخل المبلغ المطلوب " style="font-size: 18px; padding: 18px; border-radius: 12px; border: 2px solid #B4975B; -moz-appearance: textfield; appearance: textfield; width: 100%;">
+                    </div>
+                </div>
+
+                <!-- ROW 3 -->
+                <div class="form-row" style="display:flex; gap:50px; flex-wrap:wrap;">
+                    <div class="form-group" style="flex:1; min-width:350px;">
+                        <label style="font-size:25px; font-weight:700; margin-bottom:8px; display:block;">Loan Duration <span style="margin-left:300px;">مدة القرض </span></label>
+                        <select style="font-size: 18px; padding: 18px; border-radius: 12px; border: 2px solid #B4975B; width: 100%;">
+                            <option>12 Months 12شهر  </option>
+                            <option>24 Months 24 شهر </option>
+                            <option>36 Months 36 شهر </option>
+                            <option>48 Months 48 شهر </option>
+                            <option>60 Months 60 شهر </option>
+                        </select>
+                    </div>
+                    <div class="form-group" style="flex:1; min-width:350px;">
+                        <label style="font-size:25px; font-weight:700; margin-bottom:8px; display:block;">Purpose of Loan<span style="margin-left:240px;">سبب القرض </span></label>
+                        <select style="font-size: 18px; padding: 18px; border-radius: 12px; border: 2px solid #B4975B; width: 100%;">
+                            <option>Personal   شخصي </option>
+                            <option>Car Loan   قرض سيارة</option>
+                            <option>Home Loan  قرض منزل</option>
+                            <option>Other      اخرى</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <!-- ROW 4 FULL WIDTH -->
+                <div class="form-group">
+                    <label style="font-size:25px; font-weight:700; margin-bottom:8px; display:block;">Additional Notes <span style="margin-left:840px;">ملاحظات اخرى</span></label>
+                    <textarea rows="4" placeholder="Optional notes...ملاحظات اخرى " style="width:100%; font-size:18px; padding:18px; border-radius:12px; border:2px solid #B4975B; resize:none;"></textarea>
+                </div>
+
+                <!-- BUTTONS -->
+                <div class="buttons" style="margin-top:40px; display:flex; justify-content:flex-end; gap:25px;">
+                    <button class="btn back" onclick="closeBankLoanPopup()" style="padding:16px 36px; border-radius:12px; background:#ececec; font-size:18px;">Close <br> اغلاق </button>
+                    <button class="btn submit" onclick="submitBankLoanForm()" style="padding:16px 36px; border-radius:12px; background:linear-gradient(135deg,#413100,#B4975B); color:white; font-size:18px;">Send <br> ارسال </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <!-- ===== EMPLOYEE FEEDBACK POP-UP ===== -->
+    <div class="simple-overlay" id="employeeFeedbackPopup">
+        <div class="simple-modal" style="width:60%; height:95vh; padding:50px; border-radius:25px; border:5px solid #5A3E1B; background:#fff; overflow-y:auto;">
+            <!-- CLOSE BUTTON -->
+            <div class="simple-close" onclick="closeEmployeeFeedbackPopup()" style="font-size:32px; cursor:pointer;">✕</div>
+
+            <!-- TITLE -->
+            <div class="title" style="text-align:center; font-size:42px; font-weight:900; color:#413100; text-transform:uppercase;">Employee Feedback    اراء الموظفين </div>
+            <div class="divider" style="width:120px; height:5px; background:#B4975B; margin:20px auto 45px; border-radius:4px;"></div>
+
+            <!-- FORM CONTAINER -->
+            <div style="border:4px solid #5A3E1B; border-radius:20px; padding:50px; display:flex; flex-direction:column; gap:20px;">
+
+                <!-- Employee Name -->
+                <div class="form-group">
+                    <label style="font-size:25px; font-weight:700;">Employee Name <span style="margin-left:280px;">اسم الموظف</span></label> <br><br>
+                    <input type="text" placeholder="Enter your full name  /   ادخل الاسم كامل " style="font-size: 25px; padding: 18px; border-radius: 12px; border: 2px solid #B4975B; width: 50%;">
+                </div>
+
+                <!-- Department -->
+                <div class="form-group">
+                    <label style="font-size:25px; font-weight:700;">Department <span style="margin-left:380px;">القسم </span></label> <br> <br>
+                    <input type="text" placeholder="Enter department  /  ادخل القسم " style="font-size: 25px; padding: 18px; border-radius: 12px; border: 2px solid #B4975B; width: 50%;">
+                </div>
+
+                <!-- Overall Experience (Creative Buttons) -->
+                <div class="form-group">
+                    <label style="font-size: 25px; font-weight: 700; width: 50%;">Overall Experience <span style="margin-left:30px;">تقيم التجربة  </span></label><br>  <br>
+                    <div class="rating-buttons" style="display:flex; gap:25px;">
+                        <button class="rating-btn" data-value="1">😡</button>
+                        <button class="rating-btn" data-value="2">😕</button>
+                        <button class="rating-btn" data-value="3">😐</button>
+                        <button class="rating-btn" data-value="4">🙂</button>
+                        <button class="rating-btn" data-value="5">😃</button>
+                    </div>
+                </div>
+
+                <!-- Feedback -->
+                <div>
+                    <label style="font-size:25px; font-weight:700; display:block; margin-bottom:8px;">Your Feedback <span style="margin-left:880px;">الرأي الشخصي </span></label>
+                    <textarea rows="4" placeholder="Write your feedback here...      /      ... اكتب تجربتك هنا "
+                              style="width:100%; font-size:18px; padding:18px; border-radius:12px; border:2px solid #B4975B; resize:none;"></textarea>
+                </div>
+
+
+                <!-- Buttons -->
+                <div class="buttons" style="display:flex; justify-content:flex-end; gap:25px;">
+                    <button class="btn back" onclick="closeEmployeeFeedbackPopup()" style="padding:16px 36px; border-radius:12px; background:#ececec; font-size:18px;">Close <br> أغلاق</button>
+                    <button class="btn submit" onclick="submitEmployeeFeedbackForm()" style="padding:16px 36px; border-radius:12px; background:linear-gradient(135deg,#413100,#B4975B); color:white; font-size:18px;">Send<br>أرسال </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <style>
+        .simple-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.4);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+        }
+
+            .simple-overlay.active {
+                display: flex;
+            }
+
+        .simple-modal {
+            position: relative;
+        }
+
+        .rating-btn {
+            font-size: 28px;
+            padding: 10px;
+            border-radius: 50%;
+            border: 2px solid #B4975B;
+            cursor: pointer;
+            background: #fff;
+            transition: 0.3s;
+        }
+
+            .rating-btn:hover {
+                transform: scale(1.2);
+            }
+    </style>
+
+
+
+
+
+
+
+    <!-- ===== ACCESS CARD REQUEST POP-UP ===== -->
+    <div class="simple-overlay" id="accessCardPopup">
+        <div class="simple-modal" style="width:60%; height:95vh; padding:50px; border-radius:25px; border:5px solid #5A3E1B; background:#fff; overflow-y:auto;">
+
+            <!-- CLOSE BUTTON -->
+            <div class="simple-close" onclick="closeAccessCardPopup()" style="font-size:32px; cursor:pointer;">✕</div>
+
+            <!-- TITLE -->
+            <div class="title" style="text-align:center; font-size:42px; font-weight:900; color:#413100; text-transform:uppercase;">Access Card Request طلب بطاقة دخول </div>
+            <div class="divider" style="width:120px; height:5px; background:#B4975B; margin:20px auto 45px; border-radius:4px;"></div>
+
+            <!-- FORM BORDER CONTAINER -->
+            <div style="border:4px solid #5A3E1B; border-radius:20px; padding:50px; display:flex; flex-direction:column; gap:40px;">
+
+                <!-- ROW 1 -->
+                <div class="form-row" style="display:flex; gap:50px; flex-wrap:wrap;">
+                    <div class="form-group" style="flex:1; min-width:350px;">
+                        <label style="font-size:25px; font-weight:700; margin-bottom:8px; display:block;">Employee Name<span style="margin-left:280px;">اسم الموظف</span></label>
+                        <input type="text" placeholder="Enter full name   /   أدخل أسم الموظف " style="font-size: 18px; padding: 18px; border-radius: 12px; border: 2px solid #B4975B; width: 100%;">
+                    </div>
+                    <div class="form-group" style="flex:1; min-width:350px;">
+                        <label style="font-size:25px; font-weight:700; margin-bottom:8px; display:block;">Employee ID <span style="margin-left:320px;">رقم الموظف </span></label>
+                        <input type="text" placeholder="Enter employee ID   /   أدخل رقم الموظف" style="font-size: 18px; padding: 18px; border-radius: 12px; border: 2px solid #B4975B; width: 100%;">
+                    </div>
+                </div>
+
+                <!-- ROW 2 -->
+                <div class="form-row" style="display:flex; gap:50px; flex-wrap:wrap;">
+                    <div class="form-group" style="flex:1; min-width:350px;">
+                        <label style="font-size:25px; font-weight:700; margin-bottom:8px; display:block;">Department <span style="margin-left:380px;">القسم</span></label>
+                        <input type="text" placeholder="Enter department   /   ادخل القسم" style="font-size: 18px; padding: 18px; border-radius: 12px; border: 2px solid #B4975B; width: 100%;">
+                    </div>
+                    <div class="form-group" style="flex:1; min-width:350px;">
+                        <label style="font-size:25px; font-weight:700; margin-bottom:8px; display:block;">Card Type <span style="margin-left:340px;">نوع البطاقة </span></label>
+                        <select style="font-size: 18px; padding: 18px; border-radius: 12px; border: 2px solid #B4975B; width: 100%;">
+                            <option>Temporary       مؤقت </option>
+                            <option>Permanent       دائم </option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- ROW 3 FULL WIDTH -->
+                <div class="form-group">
+                    <label style="font-size:25px; font-weight:700; margin-bottom:8px; display:block;">Reason for Request <span style="margin-left:1120px;">سبب الطلب </span></label>
+                    <textarea rows="6" placeholder="Explain why you need this card...  /  ...لماذا تريد البطاقه  " style="width:100%; font-size:18px; padding:18px; border-radius:12px; border:2px solid #B4975B; resize:none;"></textarea>
+                </div>
+
+                <!-- BUTTONS -->
+                <div class="buttons" style="margin-top:40px; display:flex; justify-content:flex-end; gap:25px;">
+                    <button class="btn back" onclick="closeAccessCardPopup()" style="padding:16px 36px; border-radius:12px; background:#ececec; font-size:18px;">Close <br> أغلاق </button>
+                    <button class="btn submit" onclick="submitAccessCardForm()" style="padding:16px 36px; border-radius:12px; background:linear-gradient(135deg,#413100,#B4975B); color:white; font-size:18px;">Send<br>أرسال</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <!-- ===== EXIT & RE-ENTRY POP-UP ===== -->
+    <div class="simple-overlay" id="exitPopup">
+        <div class="simple-modal" style="width:60%; height:95vh; padding:50px; border-radius:25px; border:5px solid #5A3E1B; background:#fff; overflow-y:auto;">
+
+            <!-- CLOSE BUTTON -->
+            <div class="simple-close" onclick="closeExitPopup()" style="font-size:32px; cursor:pointer;">✕</div>
+
+            <!-- TITLE -->
+            <div class="title" style="text-align:center; font-size:42px; font-weight:900; color:#413100; text-transform:uppercase;">
+                Exit & Re-Entry Request خروج و أعادة دخول
+            </div>
+            <div class="divider" style="width:120px; height:5px; background:#B4975B; margin:20px auto 45px; border-radius:4px;"></div>
+
+            <!-- FORM BORDER CONTAINER -->
+            <div style="border:4px solid #5A3E1B; border-radius:20px; padding:50px; display:flex; flex-direction:column; gap:15px;">
+
+                <!-- ROW 1 -->
+                <div style="display:flex; gap:50px; flex-wrap:wrap;">
+                    <div style="flex:1; min-width:350px;">
+                        <label style="font-size:25px; font-weight:700; margin-bottom:8px; display:block;">Employee Name <span style="margin-left:280px;">اسم الموظف </span></label>
+                        <input type="text" placeholder="Enter full name   /   أدخل الاسم كامل "
+                               style="font-size: 18px; padding: 18px; border-radius: 12px; border: 2px solid #B4975B; width: 100%;">
+                    </div>
+
+                    <div style="flex:1; min-width:350px;">
+                        <label style="font-size:25px; font-weight:700; margin-bottom:8px; display:block;">Employee ID <span style="margin-left:320px;">رقم الموظف </span></label>
+                        <input type="text" placeholder="Enter employee ID   /   رقم الموظف "
+                               style="font-size: 18px; padding: 18px; border-radius: 12px; border: 2px solid #B4975B; width: 100%;">
+                    </div>
+                </div>
+
+                <!-- ROW 2 -->
+                <div style="display:flex; gap:50px; flex-wrap:wrap;">
+                    <div style="flex:1; min-width:350px;">
+                        <label style="font-size:25px; font-weight:700; margin-bottom:8px; display:block;">Department<span style="margin-left:380px;">القسم  </span> </label>
+                        <input type="text" placeholder="Enter department   /   أدخل القسم"
+                               style="font-size: 18px; padding: 18px; border-radius: 12px; border: 2px solid #B4975B; width: 100%;">
+                    </div>
+
+                    <div style="flex:1; min-width:350px;">
+                        <label style="font-size:25px; font-weight:700; margin-bottom:8px; display:block;">Exit Type<span style="margin-left:380px;">نوع الخروج </span></label>
+                        <select style="font-size: 18px; padding: 18px; border-radius: 12px; border: 2px solid #B4975B; width: 100%;">
+                            <option>Single Exit   خروج واحد </option>
+                            <option>Multiple Exit   خروج متعدد</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- ROW 3 -->
+                <div style="display:flex; gap:50px; flex-wrap:wrap;">
+                    <div style="flex:1; min-width:350px;">
+                        <label style="font-size:25px; font-weight:700; margin-bottom:8px; display:block;">Exit Date <span style="margin-left:380px;">تاريخ الخروج </span></label>
+                        <input type="date"
+                               style="font-size: 18px; padding: 18px; border-radius: 12px; border: 2px solid #B4975B; width: 100%;">
+                    </div>
+
+                    <div style="flex:1; min-width:350px;">
+                        <label style="font-size:25px; font-weight:700; margin-bottom:8px; display:block;">Return Date <span style="margin-left:320px;"> تاريخ العودة </span></label>
+                        <input type="date"
+                               style="font-size: 18px; padding: 18px; border-radius: 12px; border: 2px solid #B4975B; width: 100%;">
+                    </div>
+                </div>
+
+                <!-- ROW 4 FULL WIDTH -->
+                <div>
+                    <label style="font-size:25px; font-weight:700; margin-bottom:8px; display:block;">Reason <span style="margin-left:1020px;">سبب الذهاب   </span></label>
+                    <textarea rows="6" placeholder="Explain reason...   /  ...سبب الذهاب"
+                              style="width:100%; font-size:18px; padding:18px; border-radius:12px; border:2px solid #B4975B; resize:none;"></textarea>
+                </div>
+
+                <!-- BUTTONS -->
+                <div style="margin-top:40px; display:flex; justify-content:flex-end; gap:25px;">
+                    <button onclick="closeExitPopup()"
+                            style="padding:16px 36px; border-radius:12px; background:#ececec; font-size:18px;">
+                        Close
+                        <br>
+                        أغلاق
+                    </button>
+
+                    <button onclick="submitExitForm()"
+                            style="padding:16px 36px; border-radius:12px; background:linear-gradient(135deg,#413100,#B4975B); color:white; font-size:18px;">
+                        Submit
+                        <br>
+                        أرسال
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <!-- ===== UNIFORM REQUEST POP-UP ===== -->
+    <div class="simple-overlay" id="uniformPopup">
+        <div class="simple-modal" style="width:60%; height:95vh; padding:50px; border-radius:25px; border:5px solid #5A3E1B; background:#fff; overflow-y:auto;">
+
+            <!-- CLOSE BUTTON -->
+            <div class="simple-close" onclick="closeUniformPopup()" style="font-size:32px; cursor:pointer;">✕</div>
+
+            <!-- TITLE -->
+            <div style="text-align:center; font-size:42px; font-weight:900; color:#413100; text-transform:uppercase;">
+                Uniform Request  طلب زي رسمي
+            </div>
+            <div style="width:120px; height:5px; background:#B4975B; margin:20px auto 45px; border-radius:4px;"></div>
+
+            <!-- FORM BORDER CONTAINER -->
+            <div style="border:4px solid #5A3E1B; border-radius:20px; padding:50px; display:flex; flex-direction:column; gap:40px;">
+
+                <!-- ROW 1 -->
+                <div style="display:flex; gap:50px; flex-wrap:wrap;">
+                    <div style="flex:1; min-width:350px;">
+                        <label style="font-size: 25px; font-weight: 700; margin-bottom: 8px; display: block; ">Employee Name  <span style="margin-left:280px;">اسم الموظف </span></label>
+                        <input type="text" placeholder="Enter full name   /   ادخل الاسم كامل"
+                               style="font-size:18px; padding:18px; border-radius:12px; border:2px solid #B4975B; width:100%;">
+                    </div>
+                    <div style="flex:1; min-width:350px;">
+                        <label style="font-size:25px; font-weight:700; display:block; margin-bottom:8px;">Employee ID  <span style="margin-left:280px;"> رقم الموظف </span></label>
+                        <input type="text" placeholder="Enter employee ID   /   ادخل رقم الموظف"
+                               style="font-size:18px; padding:18px; border-radius:12px; border:2px solid #B4975B; width:100%;">
+                    </div>
+
+                </div>
+
+                <!-- ROW 2 -->
+                <div style="display:flex; gap:50px; flex-wrap:wrap;">
+                    <div style="flex:1; min-width:350px;">
+                        <label style="font-size:25px; font-weight:700; margin-bottom:8px; display:block;">Department  <span style="margin-left:400px;"> القسم </span></label>
+                        <input type="text" placeholder="Enter department   /   ادخل القسم"
+                               style="font-size: 18px; padding: 18px; border-radius: 12px; border: 2px solid #B4975B; width: 100%; ">
+                    </div>
+
+                    <div style="flex:1; min-width:350px;">
+                        <label style="font-size:25px; font-weight:700; margin-bottom:8px; display:block;">Uniform Size  <span style="margin-left:280px;">مقاس اللبس  </span></label>
+                        <select style="font-size: 18px; padding: 18px; border-radius: 12px; border: 2px solid #B4975B; width: 100%;">
+                            <option>Small      صغير </option>
+                            <option>Medium     متوسط</option>
+                            <option>Large      كبير </option>
+                            <option>XL </option>
+                            <option>XXL</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- ROW 3 FULL WIDTH -->
+                <div>
+                    <label style="font-size:25px; font-weight:700; margin-bottom:8px; display:block;">Quantity  <span style="margin-left:440px;">الكمية   </span></label>
+                    <input type="number" placeholder="Enter quantity   /   ادخل الكمية"
+                           style="font-size: 18px; font-size: 18px; padding: 18px; border-radius: 12px; border: 2px solid #B4975B; width: 50%;">
+                </div>
+
+                <!-- BUTTONS -->
+                <div style="margin-top:40px; display:flex; justify-content:flex-end; gap:25px;">
+                    <button onclick="closeUniformPopup()"
+                            style="padding:16px 36px; border-radius:12px; background:#ececec; font-size:18px;">
+                        Close   <br> أغلاق
+                    </button>
+
+                    <button onclick="submitUniformForm()"
+                            style="padding:16px 36px; border-radius:12px; background:linear-gradient(135deg,#413100,#B4975B); color:white; font-size:18px;">
+                        Submit <br>أرسال
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- ===== SALARY DECLARATION POP-UP ===== -->
+    <div class="simple-overlay" id="salaryPopup">
+        <div class="simple-modal" style="width:60%; height:95vh; padding:50px; border-radius:25px; border:5px solid #5A3E1B; background:#fff; overflow-y:auto;">
+
+            <!-- CLOSE BUTTON -->
+            <div class="simple-close" onclick="closeSalaryPopup()" style="font-size:32px; cursor:pointer;">✕</div>
+
+            <!-- TITLE -->
+            <div style="text-align:center; font-size:42px; font-weight:900; color:#413100; text-transform:uppercase;">
+                Salary Declaration      تعريف بالراتب
+            </div>
+            <div style="width:120px; height:5px; background:#B4975B; margin:20px auto 45px; border-radius:4px;"></div>
+
+            <!-- FORM CONTAINER -->
+            <div style="border:4px solid #5A3E1B; border-radius:20px; padding:50px; display:flex; flex-direction:column; gap:40px;">
+
+                <!-- ROW 1 -->
+                <div style="display:flex; gap:50px; flex-wrap:wrap;">
+                    <div style="flex:1; min-width:350px;">
+                        <label style="font-size:25px; font-weight:700; display:block; margin-bottom:8px;">Employee Name  <span style="margin-left:280px;">اسم الموظف </span></label>
+                        <input type="text" placeholder="Enter full name   /   ادخل اسم الموظف"
+                               style="font-size:18px; padding:18px; border-radius:12px; border:2px solid #B4975B; width:100%;">
+                    </div>
+
+                    <div style="flex:1; min-width:350px;">
+                        <label style="font-size:25px; font-weight:700; display:block; margin-bottom:8px;">Employee ID  <span style="margin-left:300px;">رقم الموظف </span></label>
+                        <input type="text" placeholder="Enter employee ID   /   ادخل رقم الموظف "
+                               style="font-size:18px; padding:18px; border-radius:12px; border:2px solid #B4975B; width:100%;">
+                    </div>
+                </div>
+
+                <!-- ROW 2 -->
+                <div style="display:flex; gap:50px; flex-wrap:wrap;">
+                    <div style="flex:1; min-width:350px;">
+                        <label style="font-size:25px; font-weight:700; display:block; margin-bottom:8px;">Department   <span style="margin-left:380px;">القسم </span></label>
+                        <input type="text" placeholder="Enter department   /   ادخل القسم"
+                               style="font-size:18px; padding:18px; border-radius:12px; border:2px solid #B4975B; width:100%;">
+                    </div>
+
+                    <div style="flex:1; min-width:350px;">
+                        <label style="font-size:25px; font-weight:700; display:block; margin-bottom:8px;">Purpose  <span style="margin-left:400px;">السبب  </span></label>
+                        <select style="font-size:18px; padding:18px; border-radius:12px; border:2px solid #B4975B; width:100%;">
+                            <option>Bank البنك </option>
+                            <option>Embassy السفارة</option>
+                            <option>Personal Use استخدام شخصي</option>
+                            <option>Other  اخرى</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- ROW 3 (Full Width like Bank Loan Notes) -->
+                <div>
+                    <label style="font-size:25px; font-weight:700; display:block; margin-bottom:8px;">Additional Notes   <span style="margin-left:1100px;">ملاحظات اخرى  </span></label>
+                    <textarea rows="4" placeholder="Optional notes...  /  ...ملاحظات اخرى  "
+                              style="width:100%; font-size:18px; padding:18px; border-radius:12px; border:2px solid #B4975B; resize:none;"></textarea>
+                </div>
+
+                <!-- BUTTONS -->
+                <div style="margin-top:40px; display:flex; justify-content:flex-end; gap:25px;">
+                    <button onclick="closeSalaryPopup()"
+                            style="padding:16px 36px; border-radius:12px; background:#ececec; font-size:18px;">
+                        Close <br> أغلاق
+                    </button>
+
+                    <button onclick="submitSalaryForm()"
+                            style="padding:16px 36px; border-radius:12px; background:linear-gradient(135deg,#413100,#B4975B); color:white; font-size:18px;">
+                        Send <br> أرسال
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- ===== EXPERIENCE CERTIFICATE POP-UP ===== -->
+    <div class="simple-overlay" id="experiencePopup">
+        <div class="simple-modal" style="width:60%; height:95vh; padding:50px; border-radius:25px; border:5px solid #5A3E1B; background:#fff; overflow-y:auto;">
+
+            <!-- CLOSE BUTTON -->
+            <div class="simple-close" onclick="closeExperiencePopup()" style="font-size:32px; cursor:pointer;">✕</div>
+
+            <!-- TITLE -->
+            <div style="text-align:center; font-size:42px; font-weight:900; color:#413100; text-transform:uppercase;">
+                Experience Certificate Request  طلب شهاد خبرة
+            </div>
+            <div style="width:120px; height:5px; background:#B4975B; margin:20px auto 45px; border-radius:4px;"></div>
+
+            <!-- FORM CONTAINER -->
+            <div style="border:4px solid #5A3E1B; border-radius:20px; padding:50px; display:flex; flex-direction:column; gap:20px;">
+
+                <!-- ROW 1 -->
+                <div style="display:flex; gap:50px; flex-wrap:wrap;">
+                    <div style="flex:1; min-width:350px;">
+                        <label style="font-size:25px; font-weight:700; display:block; margin-bottom:8px;">Employee Name  <span style="margin-left:260px;">أسم الموظف   </span></label>
+                        <input type="text" placeholder="Enter full name   / أدخل الاسم كامل "
+                               style="font-size:18px; padding:18px; border-radius:12px; border:2px solid #B4975B; width:100%;">
+                    </div>
+
+                    <div style="flex:1; min-width:350px;">
+                        <label style="font-size:25px; font-weight:700; display:block; margin-bottom:8px;">Employee ID   <span style="margin-left:280px;">رقم الموظف   </span></label>
+                        <input type="text" placeholder="Enter employee ID   / أدخل رقم الموظف"
+                               style="font-size:18px; padding:18px; border-radius:12px; border:2px solid #B4975B; width:100%;">
+                    </div>
+                </div>
+
+                <!-- ROW 2 -->
+                <div style="display:flex; gap:50px; flex-wrap:wrap;">
+                    <div style="flex:1; min-width:350px;">
+                        <label style="font-size:25px; font-weight:700; display:block; margin-bottom:8px;">Department   <span style="margin-left:380px;">القسم   </span></label>
+                        <input type="text" placeholder="Enter department   /  أدخل القسم"
+                               style="font-size:18px; padding:18px; border-radius:12px; border:2px solid #B4975B; width:100%;">
+                    </div>
+
+                    <div style="flex:1; min-width:350px;">
+                        <label style="font-size:25px; font-weight:700; display:block; margin-bottom:8px;">Certificate Language   <span style="margin-left:200px;">لغة الشهادة  </span></label>
+                        <select style="font-size:18px; padding:18px; border-radius:12px; border:2px solid #B4975B; width:100%;">
+                            <option>Arabic العربية </option>
+                            <option>English  الانجليزية</option>
+                            <option>Bilingual مزدوجة  </option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- ROW 3 -->
+                <div style="display:flex; gap:50px; flex-wrap:wrap;">
+                    <div style="flex:1; min-width:350px;">
+                        <label style="font-size:25px; font-weight:700; display:block; margin-bottom:8px;">Employment Start Date  <span style="margin-left:150px;">تاريخ بدء العمل    </span></label>
+                        <input type="date"
+                               style="font-size:18px; padding:18px; border-radius:12px; border:2px solid #B4975B; width:100%;">
+                    </div>
+
+                    <div style="flex:1; min-width:350px;">
+                        <label style="font-size:25px; font-weight:700; display:block; margin-bottom:8px;">Employment End Date  <span style="margin-left:140px;">تاريخ نهاية العمل    </span> </label>
+                        <input type="date"
+                               style="font-size:18px; padding:18px; border-radius:12px; border:2px solid #B4975B; width:100%;">
+                    </div>
+                </div>
+
+                <!-- ROW 4 FULL WIDTH -->
+                <div>
+                    <label style="font-size:25px; font-weight:700; display:block; margin-bottom:8px;">Additional Notes   <span style="margin-left:1080px;">ملاحظات أخرى     </span></label>
+                    <textarea rows="4" placeholder="Optional notes...   /  ...ملاحظات أخرى"
+                              style="width:100%; font-size:18px; padding:18px; border-radius:12px; border:2px solid #B4975B; resize:none;"></textarea>
+                </div>
+
+                <!-- BUTTONS -->
+                <div style="margin-top:40px; display:flex; justify-content:flex-end; gap:25px;">
+                    <button onclick="closeExperiencePopup()"
+                            style="padding:16px 36px; border-radius:12px; background:#ececec; font-size:18px;">
+                        Close <br> أغلاق
+                    </button>
+
+                    <button onclick="submitExperienceForm()"
+                            style="padding:16px 36px; border-radius:12px; background:linear-gradient(135deg,#413100,#B4975B); color:white; font-size:18px;">
+                        Send <br> أرسال
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- ===== FAMILY VISIT VISA POP-UP ===== -->
+    <div class="simple-overlay" id="familyPopup">
+        <div class="simple-modal" style="width:60%; height:95vh; padding:50px; border-radius:25px; border:5px solid #5A3E1B; background:#fff; overflow-y:auto;">
+
+            <!-- CLOSE BUTTON -->
+            <div class="simple-close" onclick="closeFamilyPopup()" style="font-size:32px; cursor:pointer;">✕</div>
+
+            <!-- TITLE -->
+            <div style="text-align:center; font-size:42px; font-weight:900; color:#413100; text-transform:uppercase;">
+                Family Visit Visa Request طلب تأشيرة زيارة عائلية
+            </div>
+            <div style="width:120px; height:5px; background:#B4975B; margin:20px auto 45px; border-radius:4px;"></div>
+
+            <!-- FORM CONTAINER -->
+            <div style="border:4px solid #5A3E1B; border-radius:20px; padding:50px; display:flex; flex-direction:column; gap:20px;">
+
+                <!-- ROW 1 -->
+                <div style="display:flex; gap:50px; flex-wrap:wrap;">
+                    <div style="flex:1; min-width:350px;">
+                        <label style="font-size:25px; font-weight:700; display:block; margin-bottom:8px;">Employee Name  <span style="margin-left:260px;">   أسم الموظف </span></label>
+                        <input type="text" placeholder="Enter full name    /    أدخل الاسم كامل "
+                               style="font-size:18px; padding:18px; border-radius:12px; border:2px solid #B4975B; width:100%;">
+                    </div>
+
+                    <div style="flex:1; min-width:350px;">
+                        <label style="font-size:25px; font-weight:700; display:block; margin-bottom:8px;">Employee ID  <span style="margin-left:300px;">رقم الموظف     </span></label>
+                        <input type="text" placeholder="Enter employee ID   /   أدخل أسم الموظف"
+                               style="font-size:18px; padding:18px; border-radius:12px; border:2px solid #B4975B; width:100%;">
+                    </div>
+                </div>
+
+                <!-- ROW 2 -->
+                <div style="display:flex; gap:50px; flex-wrap:wrap;">
+                    <div style="flex:1; min-width:350px;">
+                        <label style="font-size:25px; font-weight:700; display:block; margin-bottom:8px;">Visitor Name    <span style="margin-left:320px;">أسم الزائر   </span></label>
+                        <input type="text" placeholder="Enter visitor name   /  أدخل أسم الزائر "
+                               style="font-size:18px; padding:18px; border-radius:12px; border:2px solid #B4975B; width:100%;">
+                    </div>
+
+                    <div style="flex:1; min-width:350px;">
+                        <label style="font-size:25px; font-weight:700; display:block; margin-bottom:8px;">Relationship   <span style="margin-left:360px;">العلاقة    </span></label>
+                        <select style="font-size:18px; padding:18px; border-radius:12px; border:2px solid #B4975B; width:100%;">
+                            <option>Father    ألاب</option>
+                            <option>Mother    ألام </option>
+                            <option>Wife   الزوجة</option>
+                            <option>Husband   الزوج </option>
+                            <option>Son   الابن </option>
+                            <option>Daughter  الابنة </option>
+                            <option>Other  اخرى</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- ROW 3 -->
+                <div style="display:flex; gap:50px; flex-wrap:wrap;">
+                    <div style="flex:1; min-width:350px;">
+                        <label style="font-size:25px; font-weight:700; display:block; margin-bottom:8px;"> Passport Number<span style="margin-left:270px;"> رقم الجواز     </span></label>
+                        <input type="text" placeholder="Passport Number...   /   ...رقم الجواز "
+                               style=" font-size:18px; padding:18px; border-radius:12px; border:2px solid #B4975B; width:100%;">
+                    </div>
+
+                    <div style="flex:1; min-width:350px;">
+                        <label style="font-size:25px; font-weight:700; display:block; margin-bottom:8px;">Nationality  <span style="margin-left:360px;">الجنسية     </span></label>
+                        <input type="text" placeholder="Nationality ...   /   ...الجنسية "
+                               style=" font-size:18px; padding:18px; border-radius:12px; border:2px solid #B4975B; width:100%;">
+                    </div>
+                </div>
+
+                <!-- ROW 4 -->
+                <div style="display:flex; gap:50px; flex-wrap:wrap;">
+                    <div style="flex:1; min-width:350px;">
+                        <label style="font-size:25px; font-weight:700; display:block; margin-bottom:8px;">Arrival Date   <span style="margin-left:300px;">تاريخ الوصول    </span></label>
+                        <input type="date"
+                               style="font-size:18px; padding:18px; border-radius:12px; border:2px solid #B4975B; width:100%;">
+                    </div>
+
+                    <div style="flex:1; min-width:350px;">
+                        <label style="font-size:25px; font-weight:700; display:block; margin-bottom:8px;">Duration of Stay  <span style="margin-left:280px;">مدة الاقامة    </span> </label>
+                        <select style="font-size:18px; padding:18px; border-radius:12px; border:2px solid #B4975B; width:100%;">
+                            <option>30 Days  30 يوم</option>
+                            <option>60 Days  60 يوم</option>
+                            <option>90 Days  90 يوم</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- ROW 5 FULL WIDTH -->
+                <div>
+                    <label style="font-size:25px; font-weight:700; display:block; margin-bottom:8px;">Additional Notes  <span style="margin-left:1080px;">ملاحظات أخرى     </span></label>
+                    <textarea rows="4" placeholder="Optional notes...   /   ...ملاجظات أخرى"
+                              style="width:100%; font-size:18px; padding:18px; border-radius:12px; border:2px solid #B4975B; resize:none;"></textarea>
+                </div>
+
+                <!-- BUTTONS -->
+                <div style="margin-top:40px; display:flex; justify-content:flex-end; gap:25px;">
+                    <button onclick="closeFamilyPopup()"
+                            style="padding:16px 36px; border-radius:12px; background:#ececec; font-size:18px;">
+                        Close  <br> أغلاق
+                    </button>
+
+                    <button onclick="submitFamilyForm()"
+                            style="padding:16px 36px; border-radius:12px; background:linear-gradient(135deg,#413100,#B4975B); color:white; font-size:18px;">
+                        Submit  <br> أرسال
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- ===== ISSUE MOBILE SIM POP-UP ===== -->
+    <div class="simple-overlay" id="simPopup">
+        <div class="simple-modal" style="width:60%; height:95vh; padding:50px; border-radius:25px; border:5px solid #5A3E1B; background:#fff; overflow-y:auto;">
+
+            <!-- CLOSE BUTTON -->
+            <div class="simple-close" onclick="closeSimPopup()" style="font-size:32px; cursor:pointer;">✕</div>
+
+            <!-- TITLE -->
+            <div style="text-align:center; font-size:42px; font-weight:900; color:#413100; text-transform:uppercase;">
+                Issue Mobile SIM Request  أصدار شريحة جوال
+            </div>
+            <div style="width:120px; height:5px; background:#B4975B; margin:20px auto 45px; border-radius:4px;"></div>
+
+            <!-- FORM CONTAINER -->
+            <div style="border:4px solid #5A3E1B; border-radius:20px; padding:50px; display:flex; flex-direction:column; gap:20px;">
+
+                <!-- ROW 1 -->
+                <div style="display:flex; gap:50px; flex-wrap:wrap;">
+                    <div style="flex:1; min-width:350px;">
+                        <label style="font-size:25px; font-weight:700; display:block; margin-bottom:8px;">Employee Name   <span style="margin-left:280px;">أسم الموظف    </span></label>
+                        <input type="text" placeholder="Enter full name   /  أدخل أسم الموظف"
+                               style="font-size:18px; padding:18px; border-radius:12px; border:2px solid #B4975B; width:100%;">
+                    </div>
+
+                    <div style="flex:1; min-width:350px;">
+                        <label style="font-size:25px; font-weight:700; display:block; margin-bottom:8px;">Employee ID    <span style="margin-left:300px;">رقم الموظف    </span></label>
+                        <input type="text" placeholder="Enter employee ID   /  أدخل رقم الموظف"
+                               style="font-size:18px; padding:18px; border-radius:12px; border:2px solid #B4975B; width:100%;">
+                    </div>
+                </div>
+
+                <!-- ROW 2 -->
+                <div style="display:flex; gap:50px; flex-wrap:wrap;">
+                    <div style="flex:1; min-width:350px;">
+                        <label style="font-size:25px; font-weight:700; display:block; margin-bottom:8px;">Department  <span style="margin-left:380px;">القسم     </span></label>
+                        <input type="text" placeholder="Enter department   /   أدخل القسم"
+                               style="font-size:18px; padding:18px; border-radius:12px; border:2px solid #B4975B; width:100%;">
+                    </div>
+
+                    <div style="flex:1; min-width:350px;">
+                        <label style="font-size:25px; font-weight:700; display:block; margin-bottom:8px;">SIM Type   <span style="margin-left:340px;">نوع الشريحة    </span></label>
+                        <select style="font-size:18px; padding:18px; border-radius:12px; border:2px solid #B4975B; width:100%;">
+                            <option>New SIM   شريحة جديدة</option>
+                            <option>Replacement SIM  استبدال </option>
+                            <option>Upgrade to 5G ترقية  </option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- ROW 3 -->
+                <div style="display:flex; gap:50px; flex-wrap:wrap;">
+                    <div style="flex:1; min-width:350px;">
+                        <label style="font-size:20px; font-weight:700; display:block; margin-bottom:8px;">Mobile Number (If Replacement)   <span style="margin-left:40px;">(رقم الجوال (اذا كان أستبدال     </span></label>
+                        <input type="text" placeholder="Enter current number   /  أدخل الرقم الحالي "
+                               style="font-size:18px; padding:18px; border-radius:12px; border:2px solid #B4975B; width:100%;">
+                    </div>
+
+                    <div style="flex:1; min-width:350px;">
+                        <label style="font-size:25px; font-weight:700; display:block; margin-bottom:8px;">Preferred Network   <span style="margin-left:180px;">الشبكة المطلوبة    </span></label>
+                        <select style="font-size:18px; padding:18px; border-radius:12px; border:2px solid #B4975B; width:100%;">
+                            <option>Mobily  </option>
+                            <option>STC</option>
+                            <option>Zain</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- ROW 4 FULL WIDTH -->
+                <div>
+                    <label style="font-size:25px; font-weight:700; display:block; margin-bottom:8px;">Additional Notes   <span style="margin-left:1100px;">ملاحظات أخرى     </span></label>
+                    <textarea rows="4" placeholder="Optional notes...      /    ...ملاحظات أخرى"
+                              style="width:100%; font-size:18px; padding:18px; border-radius:12px; border:2px solid #B4975B; resize:none;"></textarea>
+                </div>
+
+                <!-- BUTTONS -->
+                <div style="margin-top:40px; display:flex; justify-content:flex-end; gap:25px;">
+                    <button onclick="closeSimPopup()"
+                            style="padding:16px 36px; border-radius:12px; background:#ececec; font-size:18px;">
+                        Close  <br>  أغلاق
+                    </button>
+
+                    <button onclick="submitSimForm()"
+                            style="padding:16px 36px; border-radius:12px; background:linear-gradient(135deg,#413100,#B4975B); color:white; font-size:18px;">
+                        Submit  <br>  أرسال
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== COMING SOON POPUP ===== -->
+    <div class="simple-overlay" id="comingSoonPopup">
+        <div class="simple-modal" style="
+        width: 550px;
+        max-width: 90%;
+        text-align: center;
+        border: 4px solid #5A3E1B;
+        border-radius: 25px;
+        padding: 40px;
+    ">
+
+            <!-- Close -->
+            <div class="simple-close" onclick="closeComingSoonPopup()"
+                 style="font-size:32px; cursor:pointer;">✕</div>
+
+            <!-- Title -->
+            <div style="
+            font-size: 36px;
+            font-weight: 900;
+            color: #413100;
+            margin-bottom: 20px;
+        ">
+                Coming Soon
+            </div>
+
+            <div style="
+            width: 100px;
+            height: 5px;
+            background: #B4975B;
+            margin: 15px auto 30px;
+            border-radius: 4px;
+        "></div>
+
+            <!-- Message -->
+            <div style="
+            font-size: 24px;
+            line-height: 1.8;
+            color: #413100;
+            font-weight: 600;
+        ">
+                Sorry, this page will be available soon
+                <br><br>
+                عذرًا، الصفحة ستكون متاحة قريبًا
+            </div>
+
+            <!-- Button -->
+            <div style="margin-top:30px;">
+                <button onclick="closeComingSoonPopup()" style="
+                padding: 14px 35px;
+                border-radius: 12px;
+                border: none;
+                font-size: 18px;
+                color: white;
+                cursor: pointer;
+                background: linear-gradient(135deg,#413100,#B4975B);
+            ">
+                    Close <br> إغلاق
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>

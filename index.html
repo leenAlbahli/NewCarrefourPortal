@@ -1,0 +1,392 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> HC Portal</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        button, .tag, input {
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            min-height: 100dvh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f4f5f7;
+            overflow-x: hidden;
+            padding: 20px;
+        }
+
+        #particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        /* CONTAINER */
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            display: flex;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+            background: #fff;
+        }
+
+        /* LEFT */
+        .left {
+            flex: 1;
+            background: #B4975B;
+            color: white;
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .logo-top {
+            width: 120px;
+            margin-bottom: 20px;
+        }
+
+            .logo-top img {
+                width: 100%;
+            }
+
+        .left h1 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .left p {
+            margin-bottom: 30px;
+        }
+
+        .tags {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            padding: 8px 18px;
+            background: #413100;
+            color: white;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+            .tag:active {
+                transform: translateY(-6px) scale(1.05);
+                box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+            }
+
+        /* RIGHT */
+        .right {
+            flex: 1;
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+            .right h2 {
+                font-size: 26px;
+                font-weight: 600;
+                margin-bottom: 25px;
+                color: #413100;
+            }
+
+        /* INPUT */
+        .input-wrapper {
+            width: 100%;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 18px;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        /* KEYPAD */
+        .keypad {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 8px;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+            .keypad button {
+                height: 55px;
+                font-size: 18px;
+                border: none;
+                border-radius: 8px;
+                background: #D6C394;
+                color: #413100;
+                cursor: pointer;
+                transition: 0.2s;
+            }
+
+                .keypad button:hover {
+                    background: #413100;
+                    color: white;
+                }
+
+        /* ENTER BUTTON */
+        .enter-btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background: #D6C394;
+            color: #413100;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+            .enter-btn:hover {
+                background: #413100;
+                color: white;
+            }
+
+            .enter-btn:active {
+                background: #D6C394;
+                color: #413100;
+            }
+
+        /* RESPONSIVE */
+        @media(max-width:1024px) {
+            .left, .right {
+                padding: 40px 30px;
+            }
+        }
+
+        @media(max-width:768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .left {
+                text-align: center;
+                padding: 40px 25px;
+            }
+
+            .right {
+                padding: 40px 25px;
+            }
+
+            .left h1 {
+                font-size: 24px;
+            }
+
+            .right h2 {
+                font-size: 20px;
+                text-align: center;
+            }
+
+            .keypad {
+                gap: 10px;
+                width: 100%;
+            }
+
+            input {
+                font-size: 20px;
+            }
+
+            .enter-btn {
+                font-size: 16px;
+            }
+        }
+        .welcome-box {
+            margin-top: 30px;
+            padding: 25px;
+            border-radius: 18px;
+            background: rgba(255,255,255,0.12);
+            backdrop-filter: blur(6px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+        }
+
+            .welcome-box h1 {
+                font-size: 32px;
+                margin-bottom: 12px;
+            }
+
+            .welcome-box h2 {
+                font-size: 28px;
+                text-align: right;
+                margin-bottom: 20px;
+                padding-right: 10px;
+            }
+
+            .welcome-box p {
+                font-size: 17px;
+                margin-bottom: 10px;
+            }
+
+        .arabic-text {
+            text-align: right;
+            padding-right: 10px;
+            line-height: 1.8;
+            font-size: 17px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <canvas id="particles"></canvas>
+
+    <div class="container">
+
+        <div class="left">
+
+            <div class="logo-top">
+                <img src="images/carrefourNewLogo-removebg-preview.png" alt="Your Logo">
+            </div>
+
+            <div class="welcome-box">
+                <h1>Welcome to HC Portal</h1>
+                <h2>مرحبا بك في بوابة الموظفين</h2>
+
+                <p>Great moments for everyone, every day</p>
+                <p class="arabic-text">لحظات جميلة للجميع، كل يوم</p>
+            </div>
+
+        </div>
+
+        <div class="right">
+            <h2>Employee Access دخول الموظفين</h2>
+          
+
+            <div class="input-wrapper">
+                <input type="text" id="empNumber" inputmode="numeric" readonly>
+            </div>
+
+            <div class="keypad" id="keypad"></div>
+
+            <button class="enter-btn" onclick="submitForm()">Enter Portal</button>
+        </div>
+
+    </div>
+
+    <script>
+        const canvas = document.getElementById('particles');
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        let particles = [];
+        for (let i = 0; i < 120; i++) {
+            particles.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                r: Math.random() * 3 + 1,
+                dx: (Math.random() - 0.5) * 1.2,
+                dy: (Math.random() - 0.5) * 1.2
+            });
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            particles.forEach(p => {
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                ctx.fillStyle = "#D6C39488";
+                ctx.fill();
+
+                p.x += p.dx;
+                p.y += p.dy;
+
+                if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+                if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+            });
+
+            requestAnimationFrame(draw);
+        }
+        draw();
+    </script>
+    <script>
+        const input = document.getElementById("empNumber");
+        const keypad = document.getElementById("keypad");
+
+        function createKeypad() {
+            keypad.innerHTML = "";
+            keypad.style.display = "grid";
+
+            for (let i = 1; i <= 9; i++) {
+                let btn = document.createElement("button");
+                btn.textContent = i;
+                btn.onclick = () => input.value += i;
+                keypad.appendChild(btn);
+            }
+
+            let back = document.createElement("button");
+            back.innerHTML = '<i class="fa-solid fa-delete-left"></i>';
+            back.onclick = () => input.value = input.value.slice(0, -1);
+            keypad.appendChild(back);
+
+            let zero = document.createElement("button");
+            zero.textContent = "0";
+            zero.onclick = () => input.value += "0";
+            keypad.appendChild(zero);
+
+            let clear = document.createElement("button");
+            clear.textContent = "Clear";
+            clear.onclick = () => input.value = "";
+            keypad.appendChild(clear);
+        }
+
+        createKeypad();
+
+        document.addEventListener("keydown", function (e) {
+            if (!isNaN(e.key)) input.value += e.key;
+            if (e.key === "Backspace") input.value = input.value.slice(0, -1);
+            if (e.key === "Enter") submitForm();
+        });
+
+        function submitForm() {
+            if (input.value.trim() !== "") {
+                window.location.href = "test.html";
+            } else {
+                alert("Enter Employee Number");
+            }
+        }
+    </script>
+
+</body>
+</html>
